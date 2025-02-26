@@ -1,0 +1,11 @@
+<script>start("/Users/hjalmarsamuelkristensen-karlsen/Library/CloudStorage/OneDrive-Finnmarkfylkeskommune/VG3/Koding/Space Invaders/assets/");</script>
+<script>onHasParentDirectory();</script>
+<script>addRow("fiende.png","fiende.png",0,38609,"37.7 kB",1740594475,"26.02.2025, 19:27:55");</script>
+<script>addRow("READMEassets.md","READMEassets.md",0,560,"560 B",1740603339,"26.02.2025, 21:55:39");</script>
+<script>addRow("spiller.png","spiller.png",0,32586,"31.8 kB",1740594475,"26.02.2025, 19:27:55");</script>
+<script>addRow("spiller2.png","spiller2.png",0,17349,"16.9 kB",1740597069,"26.02.2025, 20:11:09");</script>
+<script>addRow("spiller3.png","spiller3.png",0,18049,"17.6 kB",1740597073,"26.02.2025, 20:11:13");</script>
+<script>addRow("spiller4.png","spiller4.png",0,19665,"19.2 kB",1740597076,"26.02.2025, 20:11:16");</script>
+<script>addRow("sterk_fiende.png","sterk_fiende.png",0,8407,"8.2 kB",1740594475,"26.02.2025, 19:27:55");</script>
+<script>addRow("thock.wav","thock.wav",0,5851,"5.7 kB",1740608497,"26.02.2025, 23:21:37");</script>
+<script>addRow("thocken.wav","thocken.wav",0,103990,"102 kB",1740598813,"26.02.2025, 20:40:13");</script>

@@ -1,0 +1,9 @@
+{
+    "unlock_impossible": false,
+    "unlocked_skins": [
+        "default",
+        "level5_skin"
+    ],
+    "active_skin": "default",
+    "max_level_reached": 5
+}
