@@ -1,13 +1,13 @@
 {
-    "easy": 1320,
-    "medium": 2840,
-    "hard": 603,
+    "easy": 0,
+    "medium": 0,
+    "hard": 0,
     "impossible": 0,
     "level_mode": {
-        "level_1": 221,
-        "level_2": 548,
-        "level_3": 824,
-        "level_4": 878,
-        "level_5": 271
+        "level_1": 0,
+        "level_2": 0,
+        "level_3": 0,
+        "level_4": 0,
+        "level_5": 0
     }
 }
