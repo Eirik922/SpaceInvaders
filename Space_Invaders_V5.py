@@ -1121,34 +1121,65 @@ while spillkjorer:
         y_start = 120
         line_spacing = 35
         
+        # Calculate menu center point with a safe margin
+        menu_center = int(menu_panel_width * 0.4)  # Adjusted from BREDDE//4 to ensure text fits
+        
         valg1 = meny_font.render("1 - Lett", True, GRONN)
-        skjerm.blit(valg1, (BREDDE//4 - valg1.get_width()//2, y_start))
-        valg1_info = info_font.render("(Sakte fiender, siktelinje)", True, GRONN)
-        skjerm.blit(valg1_info, (BREDDE//4 - valg1_info.get_width()//2, y_start + 25))
+        skjerm.blit(valg1, (menu_center - valg1.get_width()//2, y_start))
+        
+        # For info text that might be too long, check against available width
+        valg1_info_text = "(Sakte fiender, siktelinje)"
+        valg1_info = info_font.render(valg1_info_text, True, GRONN)
+        if valg1_info.get_width() > menu_panel_width * 0.8:  # If text is too wide
+            # Split into multiple lines or use truncated text
+            valg1_info = info_font.render(valg1_info_text[:20] + "...", True, GRONN)
+        skjerm.blit(valg1_info, (menu_center - valg1_info.get_width()//2, y_start + 25))
         
         valg2 = meny_font.render("2 - Middels", True, (255, 255, 0))
-        skjerm.blit(valg2, (BREDDE//4 - valg2.get_width()//2, y_start + line_spacing * 2))
-        valg2_info = info_font.render("(Medium fiender, siktelinje)", True, (255, 255, 0))
-        skjerm.blit(valg2_info, (BREDDE//4 - valg2_info.get_width()//2, y_start + line_spacing * 2 + 25))
+        skjerm.blit(valg2, (menu_center - valg2.get_width()//2, y_start + line_spacing * 2))
+        
+        valg2_info_text = "(Medium fiender, siktelinje)"
+        valg2_info = info_font.render(valg2_info_text, True, (255, 255, 0))
+        if valg2_info.get_width() > menu_panel_width * 0.8:
+            valg2_info = info_font.render(valg2_info_text[:20] + "...", True, (255, 255, 0))
+        skjerm.blit(valg2_info, (menu_center - valg2_info.get_width()//2, y_start + line_spacing * 2 + 25))
         
         valg3 = meny_font.render("3 - Vanskelig", True, ROD)
-        skjerm.blit(valg3, (BREDDE//4 - valg3.get_width()//2, y_start + line_spacing * 4))
-        valg3_info = info_font.render("(Raske fiender, sterke fiender, ingen siktelinje)", True, ROD)
-        skjerm.blit(valg3_info, (BREDDE//4 - valg3_info.get_width()//2, y_start + line_spacing * 4 + 25))
+        skjerm.blit(valg3, (menu_center - valg3.get_width()//2, y_start + line_spacing * 4))
+        
+        # This line is particularly long and might cause clipping
+        valg3_info_text = "(Raske fiender, sterke fiender, ingen siktelinje)"
+        valg3_info_long = info_font.render(valg3_info_text, True, ROD)
+        
+        # If the text is too long, split it into two lines
+        if valg3_info_long.get_width() > menu_panel_width * 0.8:
+            valg3_info_line1 = info_font.render("(Raske fiender,", True, ROD)
+            valg3_info_line2 = info_font.render("sterke fiender, ingen siktelinje)", True, ROD)
+            skjerm.blit(valg3_info_line1, (menu_center - valg3_info_line1.get_width()//2, y_start + line_spacing * 4 + 25))
+            skjerm.blit(valg3_info_line2, (menu_center - valg3_info_line2.get_width()//2, y_start + line_spacing * 4 + 45))
+        else:
+            skjerm.blit(valg3_info_long, (menu_center - valg3_info_long.get_width()//2, y_start + line_spacing * 4 + 25))
         
         if game_config["unlock_impossible"]:
             valg4 = meny_font.render("4 - Umulig", True, (255, 0, 255))
-            skjerm.blit(valg4, (BREDDE//4 - valg4.get_width()//2, y_start + line_spacing * 6))
-            valg4_info = info_font.render("(Fiender skyter tilbake)", True, (255, 0, 255))
-            skjerm.blit(valg4_info, (BREDDE//4 - valg4_info.get_width()//2, y_start + line_spacing * 6 + 25))
+            skjerm.blit(valg4, (menu_center - valg4.get_width()//2, y_start + line_spacing * 6))
+            
+            valg4_info_text = "(Fiender skyter tilbake)"
+            valg4_info = info_font.render(valg4_info_text, True, (255, 0, 255))
+            skjerm.blit(valg4_info, (menu_center - valg4_info.get_width()//2, y_start + line_spacing * 6 + 25))
         
+        # Adjust y-position if valg3 has two lines
+        level_y_pos = y_start + line_spacing * 8
+        if valg3_info_long.get_width() > menu_panel_width * 0.8:
+            level_y_pos += 20  # Add extra space for the two-line description
+            
         level_mode_valg = meny_font.render("L - Level Mode", True, BLA)
-        skjerm.blit(level_mode_valg, (BREDDE//4 - level_mode_valg.get_width()//2, y_start + line_spacing * 8))
+        skjerm.blit(level_mode_valg, (menu_center - level_mode_valg.get_width()//2, level_y_pos))
         
         # Add info about continuing from previous level
         if game_config["max_level_reached"] > 1:
             level_continue = info_font.render(f"(Fortsett fra level {game_config['max_level_reached']})", True, BLA)
-            skjerm.blit(level_continue, (BREDDE//4 - level_continue.get_width()//2, y_start + line_spacing * 8 + 25))
+            skjerm.blit(level_continue, (menu_center - level_continue.get_width()//2, level_y_pos + 25))
         
         # Draw a vertical separator line
         pygame.draw.line(skjerm, HVIT, (menu_panel_width, 100), (menu_panel_width, HOYDE - 100), 2)
