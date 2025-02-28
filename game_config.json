@@ -1,0 +1,12 @@
+{
+    "unlock_impossible": false,
+    "unlocked_skins": [
+        "default"
+    ],
+    "active_skin": "default",
+    "max_level_reached": 1,
+    "sound_volume": 0.7,
+    "music_volume": 0.08,
+    "fullscreen_enabled": false,
+    "mouse_control": false
+}
